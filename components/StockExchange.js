@@ -46,7 +46,11 @@ const StockExchange = ({ stocks }) => {
 }
 
 StockExchange.propTypes = {
-  stocks: PropTypes.object.isRequired
+  stocks: PropTypes.object
+}
+
+StockExchange.defaultProps = {
+  stocks: {}
 }
 
 export default StockExchange
