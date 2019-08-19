@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
+  "rules": {
+    "react/jsx-boolean-value": 0,
+    "space-before-function-paren": 0,
+    "generator-star-spacing": 0
+  }
+}
