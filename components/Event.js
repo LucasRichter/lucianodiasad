@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { H2 } from './Title'
 import { Box } from '@rebass/grid'
 import Text from './Text'
@@ -22,21 +22,15 @@ const Container = styled(Box)`
   max-width: 242px;
   flex-basis: 0;
   transition: all .300s ease-in;
-  transform: translateY(20%);
-  opacity: 0;
-
-  ${p => p.show && css`
-    opacity: 1;
-    transform: translateY(0);
-  `}
 `
 
 const Image = styled.img`
   width: 100%;
+  max-height: 400px;
 `
 
 const EventMain = styled.div`
-cursor: pointer;
+  cursor: pointer;
   transition: all .125s ease-in-out;
 
   :hover {
@@ -47,20 +41,7 @@ cursor: pointer;
 
 export default class Event extends Component {
   static propTypes = {
-    event: PropTypes.object.isRequired,
-    index: PropTypes.number.isRequired
-  }
-
-  static defaultProps = {
-    index: 1
-  }
-
-  state = {
-    show: false
-  }
-
-  componentDidMount() {
-    setTimeout(() => this.setState({ show: true }), 300 * this.props.index)
+    event: PropTypes.object.isRequired
   }
 
   render() {
@@ -71,7 +52,6 @@ export default class Event extends Component {
       <Container
         my='5px'
         px='2.5px'
-        show={this.state.show}
       >
         <Link
           href={`/agenda?id=${permalink}`}

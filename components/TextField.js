@@ -17,10 +17,10 @@ const styles = () => ({
   white: {
     left: '6px',
     'font-size': '15px',
-    'font-family': 'Work Sans',
+    'font-family': 'Karla',
     'color': 'white',
     '&$focused': {
-      color: colors.blue
+      color: colors.ruby
     },
     '&$error': {
       color: '#f44336'
@@ -29,20 +29,20 @@ const styles = () => ({
   label: {
     left: '6px',
     'font-size': '15px',
-    'font-family': 'Work Sans',
+    'font-family': 'Karla',
     '&$focused': {
-      color: colors.blue
+      color: colors.ruby
     },
     '&$error': {
       color: '#f44336'
     }
   },
   input: {
-    'font-family': 'Work Sans',
+    'font-family': 'Karla',
     'font-size': '15px'
   },
   centered: {
-    'font-family': 'Work Sans',
+    'font-family': 'Karla',
     'font-size': '15px',
     'text-align': 'center'
   },
@@ -57,7 +57,7 @@ const styles = () => ({
       borderBottomColor: 'white' + ' !important'
     },
     '&:after': {
-      borderBottomColor: colors.blue
+      borderBottomColor: colors.ruby
     }
   },
   underline: {
@@ -65,7 +65,7 @@ const styles = () => ({
       borderBottomColor: colors.dark + ' !important'
     },
     '&:after': {
-      borderBottomColor: colors.blue
+      borderBottomColor: colors.ruby
     }
   }
 })

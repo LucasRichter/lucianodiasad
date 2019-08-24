@@ -141,7 +141,7 @@ export default class MenuMobile extends React.Component {
 
         <MenuList>
           {Object.entries(links).map(([key, value]) => (
-            <Link key={key} href={`/${key}`}>
+            <Link key={key} href={`/#${key}`}>
               <Anchor onClick={() => this.setState(p => ({ open: false }))}>
                 <li>
                   {value}

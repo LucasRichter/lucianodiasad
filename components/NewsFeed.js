@@ -4,24 +4,19 @@ import Slider from 'react-slick'
 import styled from 'styled-components'
 import Text from './Text'
 import { Box, Flex } from '@rebass/grid'
-import { H2 } from './Title'
+import { H2, H3 } from './Title'
 
 const StyledSlider = styled(Slider)`
-  background-image: url('/static/news.jpg');
-  background-size: cover;
-  background-position: center;
-`
-
-const Slide = styled(Flex)`
-  position: relative;
-  min-height: 400px;
   border-radius: 4px;
-  width: 100%;
+  box-shadow: 9px 14px 17px 0px rgba(0,0,0,0.71);
+  max-width: 500px;
+  background: white;
 `
 
 var settings = {
   dots: false,
   infinite: true,
+  adaptiveHeight: true,
   lazyLoad: 'ondemand',
   fade: true,
   autoplay: true,
@@ -34,29 +29,36 @@ const NewsFeed = ({ news }) => {
   const getContent = news => {
     let content = []
     for (let value of news) {
-      for (let item of value.items) {
-        content = [...content, (
-          <Slide
-            flexDirection='column-reverse'
-            alignItems='stretch'
-            jutifyContent='flex-end'
-          >
-            <Box p='20px' mt='auto' css={{
-              display: 'inline-block',
-              position: 'absolute',
-              bottom: 0,
-              left: 0
-            }}>
-              <H2 fontSize='17px' as='a' href={item.link} target='_blank' bold color='white'>
+      content = [...content, (
+        <Flex
+          alignItems='center'
+          p='20px'
+          jutifyContent='center'
+        >
+          <H2 centered>{value.title}</H2>
+          {value.items.map((item, index) => (
+            <Flex
+              mt='20px'
+              pb='10px'
+              css={{ borderBottom: '1px solid #893530' }}
+            >
+              <Box mr='10px'>
+                <H3 color='#893530' small>0{index + 1}</H3>
+              </Box>
+
+              <Text
+                fontSize='17px'
+                as='a'
+                color='#893530'
+                href={item.link}
+                target='_blank'
+                bold>
                 {item.title}
-              </H2>
-              <Text fontSize='14px' color='white'>
-                Fonte: <Text as='a' fontSize='14px' color='white' href={value.link} target='_blank'>{value.title}</Text>
               </Text>
-            </Box>
-          </Slide>
-        )]
-      }
+            </Flex>
+          ))}
+        </Flex>
+      )]
     }
     return content
   }

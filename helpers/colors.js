@@ -1,6 +1,6 @@
 export default {
   purple: '#7757cb',
-  ruby: '#9B111E',
+  ruby: '#e0115f',
   blueLight: '#2ecbdb',
   error: '#D8000C',
   success: '#4BB543',

@@ -5,9 +5,12 @@ import SectionTitle from '../components/SectionTitle'
 import { Box, Flex } from '@rebass/grid'
 import Parser from 'rss-parser'
 import NewsFeed from '../components/NewsFeed'
-import Event from '../components/Event'
 import { getEvents } from '../services/eventsServices'
-import Text from '../components/Text'
+import { getHomeImage } from '../services/homeServices'
+import SectionImage from '../components/SectionImage'
+import Location from '../components/Location'
+import ContactForm from '../components/ContactForm'
+import Events from '../components/Events'
 
 const rssLinks = [
   'http://www.stf.jus.br/portal/RSS/noticiaRss.asp?codigo=1', // STF
@@ -15,44 +18,31 @@ const rssLinks = [
   'http://www.tjrs.jus.br/site_php/noticias/news_rss.php '
 ]
 
-const index = ({ news, events }) => {
+const index = ({ news, events, currentConfig, homeImage }) => {
   return (
     <main>
       <PageHead
         title='Luciano Dias'
         description='Luciano Dias'
       />
-      <Box
-        mt='20px'
-        mx={['20px', '120px']}
+      <Flex
+        bg='#9a2617'
+        justifyContent='space-between'
+        px={['20px', '120px']}
+        py='50px'
+        css={{ borderBottom: '1px solid white' }}
       >
-        <Box my='40px'>
-          <SectionTitle
-            title='Seminários'
-            white
-          />
+        <Box>
+          <Box my='40px'>
+            <SectionTitle
+              title='Seminários'
+              white
+            />
+          </Box>
+
+          <Events events={events} />
         </Box>
-
-        <Flex
-          alignItems='flex-start'
-          justifyContent={['center', 'space-between']}
-          pb='40px'
-          mb='20px'
-          css={{ borderBottom: '1px solid white' }}
-          flexWrap='wrap'
-
-        >
-          {!events.length
-            ? <Text color='white' fontSize='18px'>Não há próximos semninários</Text>
-            : events.map((event, index) => (
-              <Event
-                index={index + 1}
-                key={event.title}
-                event={event}
-              />
-            ))}
-        </Flex>
-        <Box width='800px' mr='50px'>
+        <Box>
           <Box mb='10px'>
             <SectionTitle
               title='Notícias'
@@ -61,6 +51,21 @@ const index = ({ news, events }) => {
           </Box>
           <NewsFeed news={news} />
         </Box>
+      </Flex>
+      <Box id='escritorio' bg='white'>
+        <SectionImage
+          title='Escritório'
+          jsxText={currentConfig.home_text}
+          image={homeImage}
+        />
+      </Box>
+
+      <Box id='localizacao' bg='#f2f2f2'>
+        <Location email={currentConfig.contact_email} />
+      </Box>
+
+      <Box id='contato' css={{ borderBottom: '1px solid white' }}>
+        <ContactForm />
       </Box>
     </main>
   )
@@ -68,6 +73,8 @@ const index = ({ news, events }) => {
 
 index.propTypes = {
   news: PropTypes.array.isRequired,
+  currentConfig: PropTypes.object.isRequired,
+  homeImage: PropTypes.object,
   events: PropTypes.array.isRequired
 }
 
@@ -85,8 +92,8 @@ index.getInitialProps = async ({ currentConfig }) => {
     feed.items = feed.items.splice(0, currentConfig ? currentConfig.number_events : 5)
     news = [...news, feed]
   }
-
-  return { news, events }
+  const homeImage = await getHomeImage()
+  return { news, events, homeImage }
 }
 
 export default index

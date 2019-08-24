@@ -7,6 +7,7 @@ import colors from '../helpers/colors'
 
 const StyledTitle = styled(H2)`
   align-items: center;
+  font-size: 30px;
   color: ${p =>
     p.purple
       ? colors.purple

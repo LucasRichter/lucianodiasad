@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import colors from '../helpers/colors'
 
 export default styled.a`
   color: white;
@@ -6,9 +7,13 @@ export default styled.a`
   font-size: ${p => p.fontSize || '15px'};
   text-transform: ${p => p.lower ? 'unset' : 'uppercase'};
   font-weight: bold;
-  font-family: 'Work Sans';
+  font-family: 'Karla';
   cursor: pointer;
   transition: opacity .125s ease-in-out;
+
+  ${p => p.dark && css`
+    color: ${colors.dark};
+  `}
 
   &:hover {
     opacity: .6;

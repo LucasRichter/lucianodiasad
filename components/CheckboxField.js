@@ -9,7 +9,7 @@ import colors from '../helpers/colors'
 const styles = {
   label: {
     'font-size': '15px',
-    'font-family': 'Work Sans'
+    'font-family': 'Karla'
   },
   root: {
     color: colors.dark,

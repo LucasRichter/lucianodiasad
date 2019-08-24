@@ -20,7 +20,7 @@ const MenuDesktop = ({ links }) =>
       alignItems='center'
     >
       {Object.entries(links).map(([key, value]) => (
-        <Link key={key} href={`/${key}`}>
+        <Link key={key} href={`/#${key}`}>
           <Anchor p='0 20px'>
             {value}
           </Anchor>

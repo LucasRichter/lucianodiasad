@@ -3,7 +3,7 @@ import React from 'react'
 import App, { Container } from 'next/app'
 import Header from '../components/Header'
 import Reset from 'styled-reset'
-import { createGlobalStyle, keyframes } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 import moment from 'moment'
 import Footer from '../components/Footer'
 import axios from 'axios'
@@ -14,12 +14,6 @@ import StockExchange from '../components/StockExchange'
 axios.defaults.baseURL = process.env.API_DOMAIN
 
 moment.locale('pt-br')
-
-const bg = keyframes`
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-`
 
 const GlobalStyle = createGlobalStyle`
   ${Reset}
@@ -38,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .jsx-parser {
-    font-family: 'Work Sans', sans-serif !important;
+    font-family: 'Karla', sans-serif !important;
   }
 
   #__next {
@@ -53,10 +47,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     height: 100%;
     width: 100%;
-    animation: ${bg} 30s ease infinite;
-    background: #9B111E;
-    background: linear-gradient(to bottom, #9B111E 0%, #8C020F 100%);
-    background-size: 400% 400%;
+    background: black;
   }
 
   strong {
