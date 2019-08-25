@@ -22,6 +22,7 @@ var settings = {
   autoplay: true,
   speed: 500,
   slidesToShow: 1,
+  id: 'teste2',
   slidesToScroll: 1
 }
 

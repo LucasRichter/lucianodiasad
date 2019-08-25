@@ -3,7 +3,7 @@ import colors from '../helpers/colors'
 
 const Text = styled.p`
   color: ${p => p.color};
-  font-family: 'Karla';
+  font-family: 'Lato';
   line-height: ${p => p['lH'] || '1'};
   font-size: ${p => p['fontSize'] || '15px'};
   text-decoration: none;
@@ -22,6 +22,10 @@ const Text = styled.p`
 
   ${({ left }) => left && css`
     text-align: left;  
+  `}
+
+  ${({ upper }) => upper && css`
+    text-transform: uppercase;
   `}
 
   ${({ bold }) => bold && css`

@@ -7,7 +7,7 @@ const weight = ({ weight }) => weight && css`font-weight: ${weight};`
 
 export const H1 = styled.h1`
   margin: 0;
-  font-family: Rubik;
+  font-family: Montserrat;
   font-weight: 400;
   font-size: 40px;
   text-align: left;
@@ -20,7 +20,7 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   margin: 0;
-  font-family: Rubik;
+  font-family: Montserrat;
   font-weight: 400;
   font-size: ${p => p.fontSize || '20px'};
   text-align: left;
@@ -33,7 +33,7 @@ export const H2 = styled.h2`
 
 export const H3 = styled.h3`
   margin: 0;
-  font-family: Karla;
+  font-family: Lato;
   font-weight: 400;
   font-size: 26px;
   text-align: left;
@@ -50,7 +50,7 @@ export const H3 = styled.h3`
 
 export const H4 = styled.h4`
   margin: 0;
-  font-family: Karla;
+  font-family: Lato;
   font-weight: 400;
   font-size: 26px;
   text-align: left;

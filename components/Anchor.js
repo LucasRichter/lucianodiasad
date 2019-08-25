@@ -7,7 +7,7 @@ export default styled.a`
   font-size: ${p => p.fontSize || '15px'};
   text-transform: ${p => p.lower ? 'unset' : 'uppercase'};
   font-weight: bold;
-  font-family: 'Karla';
+  font-family: 'Lato';
   cursor: pointer;
   transition: opacity .125s ease-in-out;
 

@@ -10,7 +10,7 @@ const StyledLogo = styled.img`
   transform: scale(1);
 
   @media ${mediaQueries.laptop} {
-    max-width: 300px;
+    max-width: 250px;
   }
 
   :hover {

@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .jsx-parser {
-    font-family: 'Karla', sans-serif !important;
+    font-family: 'Lato', sans-serif !important;
   }
 
   #__next {

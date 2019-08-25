@@ -8,11 +8,11 @@ var settings = {
   dots: false,
   infinite: true,
   adaptiveHeight: true,
-  lazyLoad: 'ondemand',
-  fade: true,
   autoplay: true,
   speed: 500,
-  slidesToShow: 1,
+  id: 'teste',
+  vertical: true,
+  slidesToShow: 2,
   slidesToScroll: 1
 }
 

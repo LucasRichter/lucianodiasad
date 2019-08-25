@@ -1,93 +1,91 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { H2 } from './Title'
-import { Box } from '@rebass/grid'
+import { Box, Flex } from '@rebass/grid'
 import Text from './Text'
 import moment from 'moment'
-import Button from '@material-ui/core/Button'
 import Link from 'next/link'
-import mediaQueries from '../helpers/mediaQueries'
+import { User, Edit } from 'react-feather'
+import Anchor from './Anchor'
 
-const Container = styled(Box)`
-  @media ${mediaQueries.laptop} {
-    white-space: nowrap;
-  }
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  flex-grow: 1;
-  max-width: 242px;
-  flex-basis: 0;
-  transition: all .300s ease-in;
-`
-
-const Image = styled.img`
-  width: 100%;
-  max-height: 400px;
-`
-
-const EventMain = styled.div`
-  cursor: pointer;
-  transition: all .125s ease-in-out;
-
-  :hover {
-    opacity: .5;
-    transform: scale(1.05);
-  }
-`
-
-export default class Event extends Component {
-  static propTypes = {
-    event: PropTypes.object.isRequired
-  }
-
-  render() {
-    const { event } = this.props
-    const { title, date, cover, permalink } = event
-
-    return (
-      <Container
-        my='5px'
-        px='2.5px'
+const Event = ({ event }) => {
+  const { title, date, limit, permalink } = event
+  const momentDate = moment(date)
+  return (
+    <Flex
+      bg='white'
+      m='20px'
+      justifyContent='space-between'
+      pr='20px'
+      css={{
+        overflow: 'visible',
+        boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.35)',
+        borderRadius: 8,
+        transition: 'all .125s ease-in-out',
+        ':hover': {
+        }
+      }}
+    >
+      <Box
+        p='20px'
+        bg='#ff0000'
       >
-        <Link
-          href={`/agenda?id=${permalink}`}
-          as={`/agenda/${permalink}`}
-        >
-          <EventMain>
-            <H2 centered fontSize='15px' color='white'>
-              <strong>{title.toUpperCase()}</strong>
-            </H2>
+        <H2 centered fontSize='40px' color='white'>{momentDate.format('DD')}</H2>
+        <Text fontSize='22px' upper centered color='white'>{momentDate.format('MMM')}</Text>
+      </Box>
 
-            <Box mb='20px' css={{
-              textTransform: 'uppercase',
-              opacity: '0.8'
-            }}>
-              <Text
-                fontSize='12px'
-                color='white'
-              >
-                {moment(date).format('dddd, DD.MM.YYYY')}
-              </Text>
-            </Box>
-            <Image
-              src={`/${cover.path}`}
-              alt={title}
-            />
-          </EventMain>
-
-        </Link>
-
-        <Box mt='20px' width='100%'>
-          <Button href={`/lista/${permalink}`} fullWidth variant='contained' color='primary' size='large'>
-            Inscreva-se
-          </Button>
+      <Flex
+        mr='80px'
+        ml='20px'
+        flexDirection='column'
+        justifyContent='space-between'
+        my='20px'
+      >
+        <Box mb='10px'>
+          <Link
+            title='Ver detalhes'
+            href={`/agenda?id=${permalink}`}
+            as={`/agenda/${permalink}`}
+          >
+            <Anchor dark lower fontSize='18px'>
+              <strong>{title}</strong>
+            </Anchor>
+          </Link>
         </Box>
 
-      </Container>
-    )
-  }
+        <Flex
+          alingItems='center'
+          title='Vagas'
+        >
+          <Box mr='5px'>
+            <User />
+          </Box>
+          <Text as='strong'>
+            {limit}
+          </Text>
+        </Flex>
+      </Flex>
+
+      <Flex
+        flexDirection='column'
+        mt='20px'
+      >
+        <Box p='5px' css={{
+          transition: 'all .125s ease-in-out',
+          cursor: 'pointer',
+          ':hover': {
+            opacity: 0.5
+          }
+        }}>
+          <Edit />
+        </Box>
+      </Flex>
+    </Flex>
+  )
 }
+
+Event.propTypes = {
+  event: PropTypes.object.isRequired
+}
+
+export default Event

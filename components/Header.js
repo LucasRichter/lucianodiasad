@@ -7,9 +7,9 @@ import Menudesktop from './MenuDesktop'
 import { Box } from '@rebass/grid'
 import Logo from './Logo'
 import PropTypes from 'prop-types'
-import SocialMedias from './SocialLinks'
+import AnimatedBox from './AnimatedBox'
 
-const StyledHeader = styled.header`
+const StyledHeader = styled(AnimatedBox)`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -18,11 +18,12 @@ const StyledHeader = styled.header`
 
   @media ${mediaQueries.laptop} {
     padding: 20px 120px;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    background-color: white;
     box-sizing: border-box;
     align-items: center;
     white-space: nowrap;
+    box-shadow: 9px 14px 17px 0px rgba(0,0,0,0.71);
     width: 100%;
   }
 `
@@ -34,21 +35,16 @@ const links = {
 }
 
 const Header = ({ currentConfig }) => (
-  <StyledHeader>
+  <StyledHeader as='header' top delay='0.5'>
     <MenuMobile socialLinks={currentConfig} links={links} />
 
-    <Box
-      my='20px'
-      mx='auto'
-    >
+    <Box >
       <Link href='/'>
         <a>
           <Logo />
         </a>
       </Link>
     </Box>
-
-    <SocialMedias socialLinks={currentConfig} />
 
     <Menudesktop links={links} />
   </StyledHeader>

@@ -17,7 +17,7 @@ const Banner = styled(Flex)`
 const StockExchange = ({ stocks }) => {
   return (
     <Box
-      bg='#fdf1f2'
+      bg='#f6f6f6'
       p='20px'
       css={{
         overflow: 'hidden'

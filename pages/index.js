@@ -32,16 +32,17 @@ const index = ({ news, events, currentConfig, homeImage }) => {
         py='50px'
         css={{ borderBottom: '1px solid white' }}
       >
-        <Box>
+        <Box css={{ maxWidth: 400 }}>
           <Box my='40px'>
             <SectionTitle
-              title='Seminários'
+              title='Próximos Seminários'
               white
             />
           </Box>
 
           <Events events={events} />
         </Box>
+
         <Box>
           <Box mb='10px'>
             <SectionTitle

@@ -17,7 +17,7 @@ const styles = () => ({
   white: {
     left: '6px',
     'font-size': '15px',
-    'font-family': 'Karla',
+    'font-family': 'Lato',
     'color': 'white',
     '&$focused': {
       color: colors.ruby
@@ -29,7 +29,7 @@ const styles = () => ({
   label: {
     left: '6px',
     'font-size': '15px',
-    'font-family': 'Karla',
+    'font-family': 'Lato',
     '&$focused': {
       color: colors.ruby
     },
@@ -38,11 +38,11 @@ const styles = () => ({
     }
   },
   input: {
-    'font-family': 'Karla',
+    'font-family': 'Lato',
     'font-size': '15px'
   },
   centered: {
-    'font-family': 'Karla',
+    'font-family': 'Lato',
     'font-size': '15px',
     'text-align': 'center'
   },
