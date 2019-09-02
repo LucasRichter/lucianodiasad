@@ -20,87 +20,90 @@ const ContactForm = () => {
   const onSubmit = () => {}
 
   return (
-    <AnimatedBox delay='0.2' bottom p={['20px', '40px 120px']}>
-      <Box mb='40px'>
-        <SectionTitle
-          white
-          fontSize='30px'
-          title='Contato'
-        />
-      </Box>
-
-      <Flex
-        alignItems='center'
-        justifyContent='center'
-        flexDirection='column'
+    <AnimatedBox
+      delay='0.2'
+      bottom>
+      <Box
         mx='auto'
-        css={{ maxWidth: '500px' }}
+        my='40px'
+        p={['20px', '20px 40px']}
+        css={{ maxWidth: '500px',
+          borderRadius: 20 }}
+        bg='#f6f6f6'
       >
-        <Box mb='20px' width='100%'>
-          <TextField
-            white
-            autoFocus
-            onChange={onChange}
-            margin='dense'
-            id='name'
-            label='Nome'
-            fullWidth
+        <Box mb='40px'>
+          <SectionTitle
+            fontSize='30px'
+            title='Contato'
           />
         </Box>
 
-        <Box mb='20px' width='100%'>
-          <TextField
-            white
-            onChange={onChange}
-            margin='dense'
-            id='subjection'
-            label='Assunto'
-            fullWidth
-          />
-        </Box>
+        <Flex
+          alignItems='center'
+          justifyContent='center'
+          flexDirection='column'
+        >
+          <Box mb='20px' width='100%'>
+            <TextField
+              onChange={onChange}
+              margin='dense'
+              id='name'
+              label='Nome'
+              fullWidth
+            />
+          </Box>
 
-        <Box mb='20px' width='100%'>
-          <InputMask
-            onChange={onChange}
-            margin='dense'
-            id='phone'
-            label='Telefone'
-            mask='(99) 99999-9999'
-            maskChar={null}
-            fullWidth
-          />
-        </Box>
+          <Box mb='20px' width='100%'>
+            <TextField
+              onChange={onChange}
+              margin='dense'
+              id='subjection'
+              label='Assunto'
+              fullWidth
+            />
+          </Box>
 
-        <Box mb='20px' width='100%'>
-          <TextField
-            white
-            onChange={onChange}
-            margin='dense'
-            id='email'
-            label='E-mail'
-            type='email'
-            fullWidth
-          />
-        </Box>
+          <Box mb='20px' width='100%'>
+            <InputMask
+              onChange={onChange}
+              margin='dense'
+              id='phone'
+              label='Telefone'
+              mask='(99) 99999-9999'
+              maskChar={null}
+              fullWidth
+            />
+          </Box>
 
-        <Box mb='20px' width='100%' css={{ textarea: { height: 100 } }}>
-          <TextField
-            white
-            onChange={onChange}
-            margin='dense'
-            id='message'
-            label='Mensagem'
-            multiline
-            fullWidth
-          />
-        </Box>
+          <Box mb='20px' width='100%'>
+            <TextField
+              onChange={onChange}
+              margin='dense'
+              id='email'
+              label='E-mail'
+              type='email'
+              fullWidth
+            />
+          </Box>
 
-        <Box mt='20px'>
-          <Button variant='contained' onClick={onSubmit} color='primary' size='large'>
+          <Box mb='20px' width='100%' css={{ textarea: { height: 100 } }}>
+            <TextField
+              onChange={onChange}
+              margin='dense'
+              id='message'
+              label='Mensagem'
+              multiline
+              fullWidth
+            />
+          </Box>
+
+          <Box mt='20px'>
+            <Button variant='contained' onClick={onSubmit} color='primary' size='large'>
                 Enviar
-          </Button>
-        </Box>
-      </Flex>
+            </Button>
+          </Box>
+        </Flex>
+      </Box>
     </AnimatedBox>
   )
 }

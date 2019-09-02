@@ -5,8 +5,9 @@ import React from 'react'
 import mediaQueries from '../helpers/mediaQueries'
 import Link from 'next/link'
 import SocialMedias from './SocialLinks'
+import AnimatedBox from './AnimatedBox'
 
-const StyledFooter = styled.footer`
+const StyledFooter = styled(AnimatedBox)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +21,7 @@ const StyledFooter = styled.footer`
 `
 
 const Footer = () =>
-  <StyledFooter>
+  <StyledFooter as='footer' delay='0.3' left>
     <Link href='/'>
       <a>
         <Logo />

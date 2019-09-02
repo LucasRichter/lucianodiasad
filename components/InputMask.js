@@ -4,7 +4,7 @@ import TextField from './TextField'
 
 const InputMask = (props) =>
   <ReactInputMask {...props}>
-    { (inputProps) => <TextField {...inputProps} white /> }
+    { (inputProps) => <TextField {...inputProps} /> }
   </ReactInputMask>
 
 export default InputMask

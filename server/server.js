@@ -35,7 +35,6 @@ app.prepare().then(() => {
 
   // Allows for cross origin domain request:
   server.use(function (req, res, next) {
-    res.charset = 'utf-8'
     res.header('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
     next()

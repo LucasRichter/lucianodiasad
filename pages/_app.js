@@ -54,6 +54,14 @@ const GlobalStyle = createGlobalStyle`
     font-weight: bold !important;
   }
 
+  .my-wrapper {
+    display: block;
+    border-radius: 4px;
+    box-shadow: 9px 14px 17px 0px rgba(0,0,0,0.71);
+    max-width: 500px;
+    background: white;
+  }
+
   /* other styles */
 
 `
@@ -61,10 +69,8 @@ const GlobalStyle = createGlobalStyle`
 class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
     const res = await axios.get('/api/config/current')
-    const stocks = await axios.get('/api/stocks')
 
     return {
-      stocks: stocks.data.stocks,
       pageProps: {
         // Call page-level getInitialProps
         currentConfig: res.data,
@@ -74,15 +80,13 @@ class MyApp extends App {
   }
 
   render () {
-    const { Component, pageProps, stocks } = this.props
-    const render = typeof window !== 'undefined'
+    const { Component, pageProps } = this.props
     return (
       <SnackbarProvider maxSnack={3}>
         <GlobalStyle />
         <Container>
           <Header {...pageProps} />
-          <StockExchange stocks={stocks} />
-          {render && <Component {...pageProps} />}
+          <Component {...pageProps} />
           <Footer />
         </Container>
       </SnackbarProvider>

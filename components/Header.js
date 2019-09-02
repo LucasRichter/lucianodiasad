@@ -35,7 +35,7 @@ const links = {
 }
 
 const Header = ({ currentConfig }) => (
-  <StyledHeader as='header' top delay='0.5'>
+  <StyledHeader as='header' bottom delay='1'>
     <MenuMobile socialLinks={currentConfig} links={links} />
 
     <Box >

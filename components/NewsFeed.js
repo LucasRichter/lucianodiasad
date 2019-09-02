@@ -20,7 +20,7 @@ var settings = {
   lazyLoad: 'ondemand',
   fade: true,
   autoplay: true,
-  speed: 500,
+  speed: 1500,
   slidesToShow: 1,
   id: 'teste2',
   slidesToScroll: 1

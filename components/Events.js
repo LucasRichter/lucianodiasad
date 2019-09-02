@@ -4,15 +4,16 @@ import Slider from 'react-slick'
 import Event from './Event'
 import Text from './Text'
 
-var settings = {
+const settings = {
   dots: false,
   infinite: true,
   adaptiveHeight: true,
+  lazyLoad: 'ondemand',
+  fade: true,
   autoplay: true,
-  speed: 500,
-  id: 'teste',
-  vertical: true,
-  slidesToShow: 2,
+  speed: 1500,
+  slidesToShow: 1,
+  id: 'teste2',
   slidesToScroll: 1
 }
 
