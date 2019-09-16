@@ -15,6 +15,10 @@ export default styled.a`
     color: ${colors.dark};
   `}
 
+  ${p => p.gold && css`
+    color: ${colors.gold};
+  `}
+
   &:hover {
     opacity: .6;
   }

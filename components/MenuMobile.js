@@ -153,17 +153,17 @@ export default class MenuMobile extends React.Component {
           <Flex pt='20px' mt='20px' css={{ borderTop: '1px solid white' }}>
             <Box mr='20px'>
               <a href={socialLinks.twitter} target='_blank'>
-                <Twitter color='white' />
+                <Twitter color={colors.gold} />
               </a>
             </Box>
             <Box mr='20px'>
               <a href={socialLinks.instagram} target='_blank'>
-                <Instagram color='white' />
+                <Instagram color={colors.gold} />
               </a>
             </Box>
             <Box>
               <a href={socialLinks.facebook} target='_blank'>
-                <Facebook color='white' />
+                <Facebook color={colors.gold} />
               </a>
             </Box>
           </Flex>

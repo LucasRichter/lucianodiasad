@@ -37,7 +37,7 @@ const SectionImage = ({ jsxText, title, image }) => {
           <SectionTitle
             fontSize='30px'
             title={title}
-            dark
+            jet
           />
         </Box>
         <JsxParser

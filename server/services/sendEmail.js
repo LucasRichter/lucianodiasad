@@ -17,14 +17,12 @@ async function main(to, subject, html, text) {
 
   // send mail with defined transport object
   await transporter.sendMail({
-    from: `"Luciano Dias 👻" <${currentConfig.contact_email}>'`,
+    from: `"Luciano Dias" <${currentConfig.contact_email}>'`,
     to,
     subject,
     html: `
       <div>
         ${html}
-
-        <p>Vamo dale!</p>
       </div>
       <style type='text/css'>
         img {

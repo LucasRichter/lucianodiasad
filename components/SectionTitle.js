@@ -9,8 +9,8 @@ const StyledTitle = styled(H2)`
   align-items: center;
   font-size: 30px;
   color: ${p =>
-    p.purple
-      ? colors.purple
+    p.jet
+      ? colors.jet
       : p.blueLight
         ? colors.blueLight
         : p.sea

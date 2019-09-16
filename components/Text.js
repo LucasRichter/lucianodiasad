@@ -5,6 +5,7 @@ const Text = styled.p`
   color: ${p => p.color};
   font-family: 'Lato';
   line-height: ${p => p['lH'] || '1'};
+  transition: all .125s ease-in-out;
   font-size: ${p => p['fontSize'] || '15px'};
   text-decoration: none;
 
@@ -32,10 +33,23 @@ const Text = styled.p`
     font-weight: bold;
   `}
 
+  ${({ hover }) => hover && css`
+    &:hover {
+      opacity: 0.5;
+    }
+  `}
+
   ${({ dark }) => dark && css`
     color: ${colors.dark};
   `}
 
+  ${({ gold }) => gold && css`
+    color: ${colors.gold};
+  `}
+
+  ${({ jet }) => jet && css`
+    color: ${colors.jet};
+  `}
 
   ${({ opaque }) => opaque && css`
     opacity: 0.6;

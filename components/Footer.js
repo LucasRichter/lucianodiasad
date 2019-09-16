@@ -6,6 +6,7 @@ import mediaQueries from '../helpers/mediaQueries'
 import Link from 'next/link'
 import SocialMedias from './SocialLinks'
 import AnimatedBox from './AnimatedBox'
+import colors from '../helpers/colors'
 
 const StyledFooter = styled(AnimatedBox)`
   display: flex;
@@ -13,7 +14,7 @@ const StyledFooter = styled(AnimatedBox)`
   align-items: center;
   text-align: center;
   padding: 0 20px 20px;
-  background-color: white;
+  background-color: ${colors.jet};
 
   @media ${mediaQueries.laptop} {
     padding: 40px 120px;
@@ -30,7 +31,7 @@ const Footer = () =>
 
     <SocialMedias />
 
-    <Text>
+    <Text dark>
       © 2019 Luciano Dias, Todos os direitos reservados
     </Text>
   </StyledFooter>

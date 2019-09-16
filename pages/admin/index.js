@@ -12,7 +12,7 @@ class IndexPage extends Component {
     enqueueSnackbar: PropTypes.func.isRequired
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const token = localStorage.getItem('ADV_TOKEN')
     if (token) {
       document.location.pathname = '/admin/dashboard'
@@ -51,7 +51,7 @@ class IndexPage extends Component {
         />
 
         <Box
-          css={{ backgroundColor: 'white', textAlign: 'center' }}
+          css={{ backgroundColor: '#333533', textAlign: 'center' }}
           m={['20px 0', '0']}
           p={['20px', '40px 0']}
         >

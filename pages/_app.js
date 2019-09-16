@@ -9,7 +9,7 @@ import Footer from '../components/Footer'
 import axios from 'axios'
 import { SnackbarProvider } from 'notistack'
 import mediaQueries from '../helpers/mediaQueries'
-import StockExchange from '../components/StockExchange'
+import colors from '../helpers/colors'
 
 axios.defaults.baseURL = process.env.API_DOMAIN
 
@@ -33,6 +33,11 @@ const GlobalStyle = createGlobalStyle`
 
   .jsx-parser {
     font-family: 'Lato', sans-serif !important;
+
+    * {
+      background-color: transparent !important;
+      color: ${colors.jet} !important;
+    }
   }
 
   #__next {
@@ -81,12 +86,13 @@ class MyApp extends App {
 
   render () {
     const { Component, pageProps } = this.props
+    const render = typeof window !== 'undefined'
     return (
       <SnackbarProvider maxSnack={3}>
         <GlobalStyle />
         <Container>
           <Header {...pageProps} />
-          <Component {...pageProps} />
+          {render && <Component {...pageProps} />}
           <Footer />
         </Container>
       </SnackbarProvider>

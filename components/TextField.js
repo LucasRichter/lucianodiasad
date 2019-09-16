@@ -18,7 +18,7 @@ const styles = () => ({
     left: '6px',
     'font-size': '15px',
     'font-family': 'Lato',
-    'color': 'white',
+    'color': '#333',
     '&$focused': {
       color: colors.ruby
     },
@@ -49,12 +49,12 @@ const styles = () => ({
   focused: {},
   error: {},
   underlineWhite: {
-    'color': 'white',
+    'color': '#333533',
     '&:before': {
       borderBottomColor: 'white !important'
     },
     '&:hover:before': {
-      borderBottomColor: 'white' + ' !important'
+      borderBottomColor: '#333533' + ' !important'
     },
     '&:after': {
       borderBottomColor: colors.ruby

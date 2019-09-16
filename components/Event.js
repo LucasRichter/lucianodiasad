@@ -7,13 +7,14 @@ import moment from 'moment'
 import Link from 'next/link'
 import { User, Edit } from 'react-feather'
 import Anchor from './Anchor'
+import colors from '../helpers/colors'
 
 const Event = ({ event }) => {
   const { title, date, limit, permalink } = event
   const momentDate = moment(date)
   return (
     <Flex
-      bg='white'
+      bg={colors.jet}
       m='20px'
       justifyContent='space-between'
       pr='20px'
@@ -28,10 +29,10 @@ const Event = ({ event }) => {
     >
       <Box
         p='20px'
-        bg='#ff0000'
+        bg={colors.gold}
       >
-        <H2 centered fontSize='40px' color='white'>{momentDate.format('DD')}</H2>
-        <Text fontSize='22px' upper centered color='white'>{momentDate.format('MMM')}</Text>
+        <H2 centered fontSize='40px' color={colors.dark}>{momentDate.format('DD')}</H2>
+        <Text fontSize='22px' upper centered color={colors.dark}>{momentDate.format('MMM')}</Text>
       </Box>
 
       <Flex
@@ -58,9 +59,9 @@ const Event = ({ event }) => {
           title='Vagas'
         >
           <Box mr='5px'>
-            <User />
+            <User color={colors.dark} />
           </Box>
-          <Text as='strong'>
+          <Text color={colors.dark} as='strong'>
             {limit}
           </Text>
         </Flex>
@@ -77,7 +78,7 @@ const Event = ({ event }) => {
             opacity: 0.5
           }
         }}>
-          <Edit />
+          <Edit color={colors.dark} />
         </Box>
       </Flex>
     </Flex>

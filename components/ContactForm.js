@@ -5,8 +5,12 @@ import TextField from './TextField'
 import InputMask from './InputMask'
 import Button from '@material-ui/core/Button'
 import AnimatedBox from './AnimatedBox'
+import colors from '../helpers/colors'
+import { withSnackbar } from 'notistack'
+import Axios from 'axios'
+import PropTypes from 'prop-types'
 
-const ContactForm = () => {
+const ContactForm = ({ enqueueSnackbar }) => {
   const [data, setData] = useState({})
 
   const onChange = e => {
@@ -17,7 +21,17 @@ const ContactForm = () => {
     setData({ ...data, [key]: value })
   }
 
-  const onSubmit = () => {}
+  const onSubmit = async e => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (Object.keys(data).length < 5) return
+    try {
+      await Axios.post('/api/contact', data)
+      enqueueSnackbar('Contanto enviado com sucesso!', { variant: 'success' })
+    } catch (error) {
+      enqueueSnackbar('Algo deu errado. Tente novamente mais tarde.', { variant: 'error' })
+    }
+  }
 
   return (
     <AnimatedBox
@@ -29,12 +43,13 @@ const ContactForm = () => {
         p={['20px', '20px 40px']}
         css={{ maxWidth: '500px',
           borderRadius: 20 }}
-        bg='#f6f6f6'
+        bg={colors.jet}
       >
         <Box mb='40px'>
           <SectionTitle
             fontSize='30px'
             title='Contato'
+            dark
           />
         </Box>
 
@@ -42,6 +57,8 @@ const ContactForm = () => {
           alignItems='center'
           justifyContent='center'
           flexDirection='column'
+          as='form'
+          onSubmit={onSubmit}
         >
           <Box mb='20px' width='100%'>
             <TextField
@@ -98,7 +115,12 @@ const ContactForm = () => {
           </Box>
 
           <Box mt='20px'>
-            <Button variant='contained' onClick={onSubmit} color='primary' size='large'>
+            <Button
+              variant='contained'
+              type='submit'
+              disabled={Object.keys(data).length < 5}
+              color='primary'
+              size='large'>
                 Enviar
             </Button>
           </Box>
@@ -108,4 +130,8 @@ const ContactForm = () => {
   )
 }
 
-export default ContactForm
+ContactForm.propTypes = {
+  enqueueSnackbar: PropTypes.func.isRequired
+}
+
+export default withSnackbar(ContactForm)

@@ -141,7 +141,7 @@ class IndexPage extends Component {
         />
 
         <Flex
-          css={{ backgroundColor: 'white', textAlign: 'center' }}
+          css={{ backgroundColor: '#333533', textAlign: 'center' }}
           m={['20px 0', '0']}
           p={['20px']}
         >

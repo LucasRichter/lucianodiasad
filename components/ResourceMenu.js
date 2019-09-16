@@ -22,8 +22,10 @@ class ResourceMenu extends Component {
     anchorEl: null
   }
 
-  headers = {
-    'x-access-token': localStorage.getItem('ADV_TOKEN')
+  componentDidMount() {
+    this.headers = {
+      'x-access-token': localStorage.getItem('ADV_TOKEN')
+    }
   }
 
   onDelete = async () => {

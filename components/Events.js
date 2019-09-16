@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import Event from './Event'
 import Text from './Text'
+import colors from '../helpers/colors'
 
 const settings = {
   dots: false,
@@ -21,7 +22,7 @@ const Events = ({ events }) => {
   return (
     <Slider {...settings}>
       {!events.length
-        ? <Text color='white' fontSize='18px'>Não há próximos semninários</Text>
+        ? <Text color={colors.dark} fontSize='18px'>Não há próximos semninários</Text>
         : events.map((event, index) => (
           <Event
             key={event.title}

@@ -8,6 +8,7 @@ import { Box } from '@rebass/grid'
 import Logo from './Logo'
 import PropTypes from 'prop-types'
 import AnimatedBox from './AnimatedBox'
+import colors from '../helpers/colors'
 
 const StyledHeader = styled(AnimatedBox)`
   display: flex;
@@ -19,7 +20,7 @@ const StyledHeader = styled(AnimatedBox)`
   @media ${mediaQueries.laptop} {
     padding: 20px 120px;
     justify-content: space-between;
-    background-color: white;
+    background-color: ${colors.jet};
     box-sizing: border-box;
     align-items: center;
     white-space: nowrap;

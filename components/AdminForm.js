@@ -52,10 +52,6 @@ export default class AdminForm extends Component {
     item: {}
   }
 
-  headers = {
-    'x-access-token': localStorage.getItem('ADV_TOKEN')
-  }
-
   state= {
     ...this.props.item,
     buttonDisabled: false,
@@ -63,6 +59,9 @@ export default class AdminForm extends Component {
   }
 
   async componentDidMount() {
+    this.headers = {
+      'x-access-token': localStorage.getItem('ADV_TOKEN')
+    }
     const currentFields = fields[this.props.resource]
 
     const selectFields = currentFields.filter(s => s.type === 'select')
