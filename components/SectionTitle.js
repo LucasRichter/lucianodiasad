@@ -8,18 +8,19 @@ import colors from '../helpers/colors'
 const StyledTitle = styled(H2)`
   align-items: center;
   font-size: 30px;
+  text-align: center;
   color: ${p =>
-    p.jet
-      ? colors.jet
+    p.secondary
+      ? colors.secondary
       : p.blueLight
         ? colors.blueLight
         : p.sea
           ? colors.sea
-          : p.dark
-            ? colors.dark
+          : p.ternary
+            ? colors.ternary
             : p.white
               ? '#fff'
-              : '#292929'};
+              : p.color};
 `
 
 export default class SectionTitle extends Component {

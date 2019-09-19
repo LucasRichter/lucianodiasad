@@ -21,6 +21,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import FormControl from '@material-ui/core/FormControl'
 import ChipInput from 'material-ui-chip-input'
+import { SketchPicker } from 'react-color'
 
 const Container = styled(Box)`
   width: 100%;
@@ -96,6 +97,14 @@ export default class AdminForm extends Component {
     }
 
     switch (type) {
+      case 'color': {
+        return (
+          <SketchPicker
+            color={value}
+            onChangeComplete={color => this.onChange({ target: { id, value: color.hex } })}
+          />
+        )
+      }
       case 'array': {
         return (
           <ChipInput

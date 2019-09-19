@@ -12,7 +12,7 @@ const styles = {
     'font-family': 'Lato'
   },
   root: {
-    color: colors.dark,
+    color: colors.ternary,
     '&$checked': {
       color: colors.blue
     }

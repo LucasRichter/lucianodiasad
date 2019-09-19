@@ -5,13 +5,13 @@ import TextField from './TextField'
 import InputMask from './InputMask'
 import Button from '@material-ui/core/Button'
 import AnimatedBox from './AnimatedBox'
-import colors from '../helpers/colors'
 import { withSnackbar } from 'notistack'
 import Axios from 'axios'
 import PropTypes from 'prop-types'
 
-const ContactForm = ({ enqueueSnackbar }) => {
+const ContactForm = ({ enqueueSnackbar, colors }) => {
   const [data, setData] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const onChange = e => {
     e.preventDefault()
@@ -26,30 +26,33 @@ const ContactForm = ({ enqueueSnackbar }) => {
     e.stopPropagation()
     if (Object.keys(data).length < 5) return
     try {
+      setLoading(true)
       await Axios.post('/api/contact', data)
       enqueueSnackbar('Contanto enviado com sucesso!', { variant: 'success' })
     } catch (error) {
       enqueueSnackbar('Algo deu errado. Tente novamente mais tarde.', { variant: 'error' })
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <AnimatedBox
       delay='0.2'
+      py='40px'
       bottom>
       <Box
-        mx='auto'
-        my='40px'
+        mx={['20px', 'auto']}
         p={['20px', '20px 40px']}
         css={{ maxWidth: '500px',
           borderRadius: 20 }}
-        bg={colors.jet}
+        bg={colors.secondary}
       >
         <Box mb='40px'>
           <SectionTitle
             fontSize='30px'
             title='Contato'
-            dark
+            color={colors.primary}
           />
         </Box>
 
@@ -118,7 +121,7 @@ const ContactForm = ({ enqueueSnackbar }) => {
             <Button
               variant='contained'
               type='submit'
-              disabled={Object.keys(data).length < 5}
+              disabled={Object.keys(data).length < 5 || loading}
               color='primary'
               size='large'>
                 Enviar
@@ -131,7 +134,8 @@ const ContactForm = ({ enqueueSnackbar }) => {
 }
 
 ContactForm.propTypes = {
-  enqueueSnackbar: PropTypes.func.isRequired
+  enqueueSnackbar: PropTypes.func.isRequired,
+  colors: PropTypes.object
 }
 
 export default withSnackbar(ContactForm)

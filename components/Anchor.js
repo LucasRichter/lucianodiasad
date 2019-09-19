@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import colors from '../helpers/colors'
 
 export default styled.a`
-  color: white;
+  color: ${p => p.color};
   padding: ${p => p.p};
   font-size: ${p => p.fontSize || '15px'};
   text-transform: ${p => p.lower ? 'unset' : 'uppercase'};
@@ -11,12 +11,12 @@ export default styled.a`
   cursor: pointer;
   transition: opacity .125s ease-in-out;
 
-  ${p => p.dark && css`
-    color: ${colors.dark};
+  ${p => p.ternary && css`
+    color: ${colors.ternary};
   `}
 
-  ${p => p.gold && css`
-    color: ${colors.gold};
+  ${p => p.primary && css`
+    color: ${colors.primary};
   `}
 
   &:hover {

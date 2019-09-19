@@ -81,7 +81,7 @@ class IndexPage extends Component {
 
       default:
         return (
-          <Box>
+          <Box bg='white'>
             <Flex
               justifyContent='space-between'
             >
@@ -141,7 +141,7 @@ class IndexPage extends Component {
         />
 
         <Flex
-          css={{ backgroundColor: '#333533', textAlign: 'center' }}
+          css={{ backgroundColor: 'white', textAlign: 'center' }}
           m={['20px 0', '0']}
           p={['20px']}
         >

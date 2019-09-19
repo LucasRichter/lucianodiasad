@@ -17,17 +17,17 @@ const SocialMedias = ({ socialLinks }) =>
   >
     <Box mr='20px'>
       <a href={socialLinks && socialLinks.twitter} target='_blank'>
-        <Twitter color={colors.gold} />
+        <Twitter color={colors.primary} />
       </a>
     </Box>
     <Box mr='20px'>
       <a href={socialLinks && socialLinks.instagram} target='_blank'>
-        <Instagram color={colors.gold} />
+        <Instagram color={colors.primary} />
       </a>
     </Box>
     <Box mr='20px'>
       <a href={socialLinks && socialLinks.facebook} target='_blank'>
-        <Facebook color={colors.gold} />
+        <Facebook color={colors.primary} />
       </a>
     </Box>
   </StyledSocial>

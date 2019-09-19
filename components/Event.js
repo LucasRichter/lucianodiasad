@@ -7,32 +7,29 @@ import moment from 'moment'
 import Link from 'next/link'
 import { User, Edit } from 'react-feather'
 import Anchor from './Anchor'
-import colors from '../helpers/colors'
 
-const Event = ({ event }) => {
+const Event = ({ event, onClick, colors }) => {
   const { title, date, limit, permalink } = event
   const momentDate = moment(date)
   return (
     <Flex
-      bg={colors.jet}
+      bg={colors.secondary}
       m='20px'
       justifyContent='space-between'
       pr='20px'
       css={{
+        maxWidth: '100%',
         overflow: 'visible',
         boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.35)',
-        borderRadius: 8,
-        transition: 'all .125s ease-in-out',
-        ':hover': {
-        }
+        borderRadius: 8
       }}
     >
       <Box
         p='20px'
-        bg={colors.gold}
+        bg={colors.primary}
       >
-        <H2 centered fontSize='40px' color={colors.dark}>{momentDate.format('DD')}</H2>
-        <Text fontSize='22px' upper centered color={colors.dark}>{momentDate.format('MMM')}</Text>
+        <H2 centered fontSize='40px' color={colors.ternary}>{momentDate.format('DD')}</H2>
+        <Text fontSize='22px' upper centered color={colors.ternary}>{momentDate.format('MMM')}</Text>
       </Box>
 
       <Flex
@@ -48,7 +45,7 @@ const Event = ({ event }) => {
             href={`/agenda?id=${permalink}`}
             as={`/agenda/${permalink}`}
           >
-            <Anchor dark lower fontSize='18px'>
+            <Anchor color={colors.ternary} lower fontSize='18px'>
               <strong>{title}</strong>
             </Anchor>
           </Link>
@@ -59,9 +56,9 @@ const Event = ({ event }) => {
           title='Vagas'
         >
           <Box mr='5px'>
-            <User color={colors.dark} />
+            <User color={colors.ternary} />
           </Box>
-          <Text color={colors.dark} as='strong'>
+          <Text color={colors.ternary} as='strong'>
             {limit}
           </Text>
         </Flex>
@@ -71,14 +68,14 @@ const Event = ({ event }) => {
         flexDirection='column'
         mt='20px'
       >
-        <Box p='5px' css={{
+        <Box onClick={onClick} css={{
           transition: 'all .125s ease-in-out',
           cursor: 'pointer',
           ':hover': {
             opacity: 0.5
           }
         }}>
-          <Edit color={colors.dark} />
+          <Edit color={colors.ternary} />
         </Box>
       </Flex>
     </Flex>
@@ -86,6 +83,8 @@ const Event = ({ event }) => {
 }
 
 Event.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  colors: PropTypes.object.isRequired,
   event: PropTypes.object.isRequired
 }
 

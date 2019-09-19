@@ -10,7 +10,7 @@ async function main(to, subject, html, text) {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: 'smtp@Luciano Dias.com.br', // generated ethereal user
+      user: 'smtp@lucianodiasadv.com.br', // generated ethereal user
       pass: 'pqpqpq6' // generated ethereal password
     }
   })

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import Event from './Event'
 import Text from './Text'
-import colors from '../helpers/colors'
+import GuestForm from './GuestForm'
 
 const settings = {
   dots: false,
@@ -18,23 +18,35 @@ const settings = {
   slidesToScroll: 1
 }
 
-const Events = ({ events }) => {
+const Events = ({ events, colors }) => {
+  const [event, setEvent] = useState('')
+
   return (
-    <Slider {...settings}>
-      {!events.length
-        ? <Text color={colors.dark} fontSize='18px'>Não há próximos semninários</Text>
-        : events.map((event, index) => (
-          <Event
-            key={event.title}
-            event={event}
-          />
-        ))}
-    </Slider>
+    <Fragment>
+      <Slider {...settings}>
+        {!events.length
+          ? <Text color={colors.ternary} fontSize='18px'>Não há próximos semninários</Text>
+          : events.map((event, index) => (
+            <Event
+              key={event.title}
+              event={event}
+              colors={colors}
+              onClick={() => setEvent(event._id)}
+            />
+          ))}
+      </Slider>
+      <GuestForm
+        open={Boolean(event)}
+        event={event}
+        onClose={() => setEvent('')}
+      />
+    </Fragment>
   )
 }
 
 Events.propTypes = {
-  events: PropTypes.array.isRequired
+  events: PropTypes.array.isRequired,
+  colors: PropTypes.object
 }
 
 export default Events

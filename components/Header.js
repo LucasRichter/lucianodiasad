@@ -8,7 +8,6 @@ import { Box } from '@rebass/grid'
 import Logo from './Logo'
 import PropTypes from 'prop-types'
 import AnimatedBox from './AnimatedBox'
-import colors from '../helpers/colors'
 
 const StyledHeader = styled(AnimatedBox)`
   display: flex;
@@ -20,7 +19,7 @@ const StyledHeader = styled(AnimatedBox)`
   @media ${mediaQueries.laptop} {
     padding: 20px 120px;
     justify-content: space-between;
-    background-color: ${colors.jet};
+    background-color: ${p => p.bg};
     box-sizing: border-box;
     align-items: center;
     white-space: nowrap;
@@ -28,16 +27,9 @@ const StyledHeader = styled(AnimatedBox)`
     width: 100%;
   }
 `
-
-const links = {
-  escritorio: 'Escritório',
-  contato: 'Contato',
-  localizacao: 'Localização'
-}
-
-const Header = ({ currentConfig }) => (
-  <StyledHeader as='header' bottom delay='1'>
-    <MenuMobile socialLinks={currentConfig} links={links} />
+const Header = ({ currentConfig, colors, tabs }) => (
+  <StyledHeader bg={colors.secondary} as='header' bottom delay='1'>
+    <MenuMobile colors={colors} socialLinks={currentConfig} links={tabs} />
 
     <Box >
       <Link href='/'>
@@ -47,12 +39,14 @@ const Header = ({ currentConfig }) => (
       </Link>
     </Box>
 
-    <Menudesktop links={links} />
+    <Menudesktop colors={colors} links={tabs} />
   </StyledHeader>
 )
 
 Header.propTypes = {
-  currentConfig: PropTypes.object
+  currentConfig: PropTypes.object,
+  colors: PropTypes.object,
+  tabs: PropTypes.array
 }
 
 export default Header

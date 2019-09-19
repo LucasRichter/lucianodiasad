@@ -2,18 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, Flex } from '@rebass/grid'
 import Text from './Text'
-import colors from '../helpers/colors'
+import styled, { keyframes } from 'styled-components'
 
-const StockExchange = ({ stocks }) => {
+const move = keyframes`
+  0%{transform: translateX(-50%)}
+  100%{transform: translateX(100%)}
+`
+
+const Banner = styled(Flex)`
+  animation: ${move} 15s linear infinite;
+`
+
+const StockExchange = ({ stocks, colors }) => {
   return (
     <Box
-      bg={colors.jet}
+      bg={colors.secondary}
       p='20px'
       css={{
         overflow: 'hidden'
       }}
     >
-      <Flex
+      <Banner
         justifyContent='space-between'
         alignItems='center'
       >
@@ -23,20 +32,22 @@ const StockExchange = ({ stocks }) => {
             alignItems='center'
             mx='30px'
           >
-            <Text dark>
-              {key} <Text as='strong' color={value.variation < 0 ? colors.error : colors.success}>
-                {value.variation}%
-              </Text>
+            <Text color={colors.primary}>
+              {key}
             </Text>
 
+            <Text bold color={value.variation < 0 ? '#D8000C' : '4BB543'}>
+        ({value.variation}%)
+            </Text>
           </Flex>
         ))}
-      </Flex>
+      </Banner>
     </Box>
   )
 }
 
 StockExchange.propTypes = {
+  colors: PropTypes.object,
   stocks: PropTypes.object
 }
 

@@ -12,9 +12,8 @@ import ContactForm from '../components/ContactForm'
 import Events from '../components/Events'
 import StockExchange from '../components/StockExchange'
 import Axios from 'axios'
-import colors from '../helpers/colors'
 
-const index = ({ news, events, currentConfig, homeImage, stocks }) => {
+const index = ({ news, events, currentConfig, colors, homeImage, stocks }) => {
   return (
     <main>
       <PageHead
@@ -22,48 +21,49 @@ const index = ({ news, events, currentConfig, homeImage, stocks }) => {
         description='Luciano Dias'
       />
       <Flex
-        bg={colors.gray}
+        bg={colors.ternary}
         justifyContent='space-between'
+        flexWrap='wrap'
         px={['20px', '120px']}
         py='50px'
-        css={{ borderBottom: '1px solid white' }}
       >
-        <Box css={{ maxWidth: 400 }}>
-          <Box my='40px'>
+        <Box width={['100%', '400px']}>
+          <Box m='40px 0 10px'>
             <SectionTitle
               title='Próximos Seminários'
-              white
+              color={colors.secondary}
             />
           </Box>
 
-          <Events events={events} />
+          <Events colors={colors} events={events} />
         </Box>
 
-        <Box>
+        <Box width={['100%', '540px']}>
           <Box mb='10px'>
             <SectionTitle
               title='Notícias'
-              white
+              color={colors.secondary}
             />
           </Box>
-          <NewsFeed news={news} />
+          <NewsFeed colors={colors} news={news} />
         </Box>
       </Flex>
-      <StockExchange stocks={stocks} />
-      <Box id='escritorio' bg={colors.dark}>
+      <StockExchange colors={colors} stocks={stocks} />
+      <Box id='escritorio' bg={colors.ternary}>
         <SectionImage
+          colors={colors}
           title='Escritório'
           jsxText={currentConfig.home_text}
           image={homeImage}
         />
       </Box>
 
-      <Box id='localizacao' bg={colors.jet}>
-        <Location email={currentConfig.contact_email} />
+      <Box id='localizacao' bg={colors.secondary}>
+        <Location colors={colors} email={currentConfig.contact_email} />
       </Box>
 
-      <Box id='contato' css={{ borderBottom: '1px solid white' }}>
-        <ContactForm />
+      <Box id='contato' bg={colors.ternary}>
+        <ContactForm colors={colors} />
       </Box>
     </main>
   )
@@ -73,6 +73,7 @@ index.propTypes = {
   news: PropTypes.array,
   stocks: PropTypes.array,
   currentConfig: PropTypes.object,
+  colors: PropTypes.object,
   homeImage: PropTypes.object,
   events: PropTypes.array
 }

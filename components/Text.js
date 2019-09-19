@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import colors from '../helpers/colors'
 
-const Text = styled.p`
+const Text = styled.p.attrs(p => ({ className: 'text-main' }))`
   color: ${p => p.color};
   font-family: 'Lato';
   line-height: ${p => p['lH'] || '1'};
@@ -14,15 +14,15 @@ const Text = styled.p`
   `}
 
   ${({ m }) => m && css`
-    margin: ${m};  
+    margin: ${m};
   `}
-  
+
   ${({ centered }) => centered && css`
-    text-align: center;  
+    text-align: center;
   `}
 
   ${({ left }) => left && css`
-    text-align: left;  
+    text-align: left;
   `}
 
   ${({ upper }) => upper && css`
@@ -39,16 +39,16 @@ const Text = styled.p`
     }
   `}
 
-  ${({ dark }) => dark && css`
-    color: ${colors.dark};
+  ${({ ternary }) => ternary && css`
+    color: ${colors.ternary};
   `}
 
-  ${({ gold }) => gold && css`
-    color: ${colors.gold};
+  ${({ primary }) => primary && css`
+    color: ${colors.primary};
   `}
 
-  ${({ jet }) => jet && css`
-    color: ${colors.jet};
+  ${({ secondary }) => secondary && css`
+    color: ${colors.secondary};
   `}
 
   ${({ opaque }) => opaque && css`

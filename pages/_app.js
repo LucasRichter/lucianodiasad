@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 
     * {
       background-color: transparent !important;
-      color: ${colors.jet} !important;
+      color: ${colors.secondary} !important;
     }
   }
 
@@ -51,6 +51,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     height: 100%;
+    overflow-x: hidden;
     width: 100%;
     background: black;
   }
@@ -74,11 +75,18 @@ const GlobalStyle = createGlobalStyle`
 class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
     const res = await axios.get('/api/config/current')
+    const tabs = await axios.get('/api/tabs')
 
     return {
       pageProps: {
         // Call page-level getInitialProps
         currentConfig: res.data,
+        colors: {
+          primary: res.data.primary_color,
+          secondary: res.data.secondary_color,
+          ternary: res.data.ternary_color
+        },
+        tabs: tabs.data,
         ...(Component.getInitialProps ? await Component.getInitialProps({ ...ctx, currentConfig: res.data }) : {})
       }
     }
@@ -91,9 +99,9 @@ class MyApp extends App {
       <SnackbarProvider maxSnack={3}>
         <GlobalStyle />
         <Container>
-          <Header {...pageProps} />
+          {pageProps.tabs && <Header {...pageProps} />}
           {render && <Component {...pageProps} />}
-          <Footer />
+          <Footer {...pageProps} />
         </Container>
       </SnackbarProvider>
     )

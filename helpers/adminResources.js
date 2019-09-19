@@ -4,6 +4,32 @@ import { X, Check } from 'react-feather'
 import { ContentState, convertFromHTML, EditorState } from 'draft-js'
 
 export const fields = {
+  tabs: [
+    {
+      id: 'title',
+      label: 'Título',
+      required: true
+    },
+    {
+      id: 'permalink',
+      label: 'Permalink',
+      required: true
+    },
+    {
+      id: 'content',
+      type: 'editor',
+      parseDefaultValue: s => {
+        const blocksFromHTML = convertFromHTML(s)
+        const state = ContentState.createFromBlockArray(
+          blocksFromHTML.contentBlocks,
+          blocksFromHTML.entityMap
+        )
+        return EditorState.createWithContent(state)
+      },
+      required: true,
+      label: 'Conteúdo'
+    }
+  ],
   images: [
     {
       id: 'file',
@@ -48,6 +74,21 @@ export const fields = {
       label: 'Texto do Escritório'
     },
     {
+      id: 'primary_color',
+      label: 'Cor primária',
+      type: 'color'
+    },
+    {
+      id: 'secondary_color',
+      label: 'Cor secondária',
+      type: 'color'
+    },
+    {
+      id: 'ternary_color',
+      label: 'Cor terciária',
+      type: 'color'
+    },
+    {
       id: 'facebook',
       label: 'Facebook Link'
     },
@@ -85,10 +126,10 @@ export const fields = {
   guests: [
     {
       id: 'event',
-      label: 'Festa',
+      label: 'Evento',
       type: 'select',
       selectKey: 'party',
-      resource: 'events?guests=true'
+      resource: 'events'
     },
     {
       id: 'email',
@@ -98,6 +139,18 @@ export const fields = {
     {
       id: 'name',
       label: 'Nome'
+    },
+    {
+      id: 'phone',
+      label: 'Telefone'
+    },
+    {
+      id: 'company_name',
+      label: 'Instituição'
+    },
+    {
+      id: 'cnpj',
+      label: 'CNPJ'
     }
   ],
   users: [
@@ -190,6 +243,16 @@ export const extraMenus = {
 }
 
 export const columns = {
+  tabs: [
+    {
+      key: 'title',
+      title: 'Seção'
+    },
+    {
+      key: 'permalink',
+      title: 'permalink'
+    }
+  ],
   images: [
     {
       key: 'file',
@@ -215,12 +278,20 @@ export const columns = {
       text: s => s.event && s.event.party
     },
     {
-      key: 'email',
-      title: 'E-mail'
-    },
-    {
       key: 'name',
       title: 'Nome'
+    },
+    {
+      key: 'phone',
+      title: 'Telefone'
+    },
+    {
+      key: 'company_name',
+      title: 'Instituição'
+    },
+    {
+      key: 'cnpj',
+      title: 'CNPJ'
     }
   ],
   events: [
@@ -230,7 +301,7 @@ export const columns = {
     },
     {
       key: 'guest_count',
-      title: 'Nomes'
+      title: 'Nomes Inscritos'
     },
     {
       key: 'limit',

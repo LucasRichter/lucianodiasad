@@ -62,7 +62,7 @@ const styles = () => ({
   },
   underline: {
     '&:hover:before': {
-      borderBottomColor: colors.dark + ' !important'
+      borderBottomColor: colors.ternary + ' !important'
     },
     '&:after': {
       borderBottomColor: colors.ruby

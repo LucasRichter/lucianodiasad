@@ -83,7 +83,7 @@ class Agenda extends Component {
 
         <GuestForm
           open={this.state.open}
-          title={_id}
+          event={_id}
           onClose={() => this.setState({ open: false })}
         />
       </main>

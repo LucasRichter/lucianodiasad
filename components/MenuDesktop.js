@@ -13,16 +13,16 @@ const Menu = styled.div`
   }
 `
 
-const MenuDesktop = ({ links }) =>
+const MenuDesktop = ({ links, colors }) =>
   <Menu>
     <Flex
       justifyContent='space-between'
       alignItems='center'
     >
-      {Object.entries(links).map(([key, value]) => (
-        <Link key={key} href={`/#${key}`}>
-          <Anchor dark p='0 20px'>
-            {value}
+      {links.map(value => (
+        <Link key={value._id} href={`/${value.permalink}`}>
+          <Anchor color={colors.ternary} p='0 20px'>
+            {value.title}
           </Anchor>
         </Link>
       ))}
@@ -30,7 +30,8 @@ const MenuDesktop = ({ links }) =>
   </Menu>
 
 MenuDesktop.propTypes = {
-  links: PropTypes.object.isRequired
+  links: PropTypes.object.isRequired,
+  colors: PropTypes.object
 }
 
 export default MenuDesktop

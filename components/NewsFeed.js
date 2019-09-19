@@ -5,14 +5,12 @@ import styled from 'styled-components'
 import Text from './Text'
 import { Box, Flex } from '@rebass/grid'
 import { H2, H3 } from './Title'
-import colors from '../helpers/colors'
 
 const StyledSlider = styled(Slider)`
   border-radius: 4px;
   box-shadow: 9px 14px 17px 0px rgba(0,0,0,0.71);
-  max-width: 500px;
   min-height: 540px;
-  background: ${colors.jet};
+  background: ${p => p.bg};
 `
 
 var settings = {
@@ -28,7 +26,7 @@ var settings = {
   slidesToScroll: 1
 }
 
-const NewsFeed = ({ news }) => {
+const NewsFeed = ({ news, colors }) => {
   const getContent = news => {
     let content = []
     for (let value of news) {
@@ -37,22 +35,22 @@ const NewsFeed = ({ news }) => {
           alignItems='center'
           p='20px'
           jutifyContent='center'
-          css={{ borderBottom: `1px solid ${colors.gold}` }}
         >
-          <H2 color={colors.dark} centered>{value.title}</H2>
+          <H2 color={colors.ternary} centered>{value.title}</H2>
           {value.items.map((item, index) => (
             <Flex
               mt='20px'
+              css={{ borderBottom: `1px solid ${colors.primary}` }}
               pb='10px'
             >
               <Box mr='10px'>
-                <H3 color={colors.dark} small>0{index + 1}</H3>
+                <H3 color={colors.ternary} small>0{index + 1}</H3>
               </Box>
 
               <Text
                 fontSize='17px'
                 as='a'
-                color={colors.dark}
+                color={colors.ternary}
                 href={item.link}
                 target='_blank'
                 bold
@@ -67,14 +65,15 @@ const NewsFeed = ({ news }) => {
     return content
   }
   return (
-    <StyledSlider {...settings}>
+    <StyledSlider bg={colors.secondary} {...settings}>
       {getContent(news)}
     </StyledSlider>
   )
 }
 
 NewsFeed.propTypes = {
-  news: PropTypes.array.isRequired
+  news: PropTypes.array.isRequired,
+  colors: PropTypes.object
 }
 
 export default NewsFeed

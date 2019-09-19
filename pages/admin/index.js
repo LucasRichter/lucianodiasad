@@ -51,7 +51,7 @@ class IndexPage extends Component {
         />
 
         <Box
-          css={{ backgroundColor: '#333533', textAlign: 'center' }}
+          css={{ backgroundColor: 'white', textAlign: 'center' }}
           m={['20px 0', '0']}
           p={['20px', '40px 0']}
         >
@@ -78,7 +78,7 @@ class IndexPage extends Component {
               label='Senha'
             />
           </Box>
-          `<Button variant='contained' onClick={this.onSubmit} color='primary' size='large'>
+          <Button variant='contained' onClick={this.onSubmit} color='primary' size='large'>
                 Entrar
           </Button>`
         </Box>

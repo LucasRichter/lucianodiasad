@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import { Users, Settings, Gift, List as ListIcon, User, Image, LogOut } from 'react-feather'
+import { Users, Settings, Gift, List as ListIcon, User, Image, LogOut, Bookmark } from 'react-feather'
 import { ListItemIcon } from '@material-ui/core'
 
 const styles = theme => ({
@@ -22,6 +22,7 @@ function ListItemLink(props) {
 const links = {
   events: 'Eventos',
   guests: 'Nomes na lista',
+  tabs: 'Seções',
   images: 'Galeria',
   users: 'Usuários',
   config: 'Configurações'
@@ -32,6 +33,7 @@ const icons = {
   events: <Gift />,
   guests: <User />,
   lists: <ListIcon />,
+  tabs: <Bookmark />,
   users: <Users />,
   config: <Settings />
 }

@@ -11,8 +11,8 @@ routesImplementation.add('/admin/dashboard/:resource', 'admin/dashboard')
 routesImplementation.add('/admin/dashboard/:resource/:action', 'admin/dashboard')
 routesImplementation.add('/admin/dashboard/:resource/:action/:id', 'admin/dashboard')
 
-routesImplementation.add('/lista/:event', 'lista')
 routesImplementation.add('/agenda/:id', 'agenda')
+routesImplementation.add('/:slug', 'tabs')
 
 module.exports = routesImplementation
 

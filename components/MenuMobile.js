@@ -4,7 +4,6 @@ import React from 'react'
 import Anchor from './Anchor'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import colors from '../helpers/colors'
 import { Twitter, Instagram, Facebook } from 'react-feather'
 import { Box, Flex } from '@rebass/grid'
 
@@ -96,7 +95,7 @@ const MenuList = styled.ul`
   padding: 50px;
   padding-top: 125px;
   height: 100vh;
-  background: ${colors.dark};
+  background: ${p => p.bg};
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -116,7 +115,8 @@ const MenuList = styled.ul`
 
 export default class MenuMobile extends React.Component {
   static propTypes = {
-    links: PropTypes.object.isRequired,
+    links: PropTypes.array.isRequired,
+    colors: PropTypes.object,
     socialLinks: PropTypes.object
   }
 
@@ -129,7 +129,7 @@ export default class MenuMobile extends React.Component {
   }
 
   render() {
-    const { links, socialLinks: asLink } = this.props
+    const { links, socialLinks: asLink, colors } = this.props
     const socialLinks = asLink || {}
     return (
 
@@ -139,12 +139,12 @@ export default class MenuMobile extends React.Component {
         <span />
         <span />
 
-        <MenuList>
-          {Object.entries(links).map(([key, value]) => (
-            <Link key={key} href={`/#${key}`}>
-              <Anchor onClick={() => this.setState(p => ({ open: false }))}>
+        <MenuList bg={colors.ternary}>
+          {links.map(value => (
+            <Link key={value._id} href={`/${value.permalink}`}>
+              <Anchor color={colors.primary} onClick={() => this.setState(p => ({ open: false }))}>
                 <li>
-                  {value}
+                  {value.title}
                 </li>
               </Anchor>
             </Link>
@@ -153,17 +153,17 @@ export default class MenuMobile extends React.Component {
           <Flex pt='20px' mt='20px' css={{ borderTop: '1px solid white' }}>
             <Box mr='20px'>
               <a href={socialLinks.twitter} target='_blank'>
-                <Twitter color={colors.gold} />
+                <Twitter color={colors.primary} />
               </a>
             </Box>
             <Box mr='20px'>
               <a href={socialLinks.instagram} target='_blank'>
-                <Instagram color={colors.gold} />
+                <Instagram color={colors.primary} />
               </a>
             </Box>
             <Box>
               <a href={socialLinks.facebook} target='_blank'>
-                <Facebook color={colors.gold} />
+                <Facebook color={colors.primary} />
               </a>
             </Box>
           </Flex>
