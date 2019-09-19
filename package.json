@@ -14,10 +14,6 @@
 		"heroku-postbuild": "next build",
 		"start": "pm2 start server/server.js"
 	},
-	"now": {
-		"name": "luciano",
-		"alias": "luciano"
-	},
 	"dependencies": {
 		"@babel/plugin-proposal-optional-chaining": "^7.2.0",
 		"@brazilian-utils/format-cnpj": "^0.1.8",
