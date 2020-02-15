@@ -30,7 +30,7 @@ const SectionImage = ({ jsxText, title, colors, image }) => {
       justifyContent='center'
     >
       <AnimatedBox delay='0.5' left mb={[20, 0]}>
-        <Image width={['100%', '800px']} url={`/${image?.file.path}`} />
+        <Image width={['100%', '800px']} url={`/${image.file && image.file.path}`} />
       </AnimatedBox>
 
       <AnimatedBox
