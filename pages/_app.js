@@ -95,6 +95,7 @@ class MyApp extends App {
   render () {
     const { Component, pageProps } = this.props
     const render = typeof window !== 'undefined'
+
     return (
       <SnackbarProvider maxSnack={3}>
         <GlobalStyle />

@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt')
 const User = require('../models/user')
 User.methods(['get', 'post', 'put', 'delete'])
   .updateOptions({ new: true, runValidators: true })
-  .before('post', [helpers.validateJwt, hashPassowrd])
-  .before('put', [helpers.validateJwt, hashPassowrd])
+  .before('post', [helpers.validateJwt, hashPassword])
+  .before('put', [helpers.validateJwt, hashPassword])
   .before('delete', helpers.validateJwt)
   .after('post', helpers.formatResponse).after('put', helpers.formatResponse)
 
-function hashPassowrd(req, res, next) {
+function hashPassword(req, res, next) {
   req.body.password = bcrypt.hashSync(req.body.password, 10)
   next()
 }

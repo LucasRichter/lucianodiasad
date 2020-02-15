@@ -4,7 +4,6 @@ import { Box, Flex } from '@rebass/grid'
 import { fields } from '../helpers/adminResources'
 import { Button } from '@material-ui/core'
 import { H2 } from './Title'
-import { Editor } from 'react-draft-wysiwyg'
 import { convertToRaw } from 'draft-js'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import CheckboxField from './CheckboxField'
@@ -22,6 +21,11 @@ import Select from '@material-ui/core/Select'
 import FormControl from '@material-ui/core/FormControl'
 import ChipInput from 'material-ui-chip-input'
 import { SketchPicker } from 'react-color'
+import dynamic from 'next/dynamic'
+const Editor = dynamic(
+  () => import('react-draft-wysiwyg').then(mod => mod.Editor),
+  { ssr: false }
+)
 
 const Container = styled(Box)`
   width: 100%;
@@ -263,7 +267,7 @@ export default class AdminForm extends Component {
         </H2>
         {this.form}
         <Button variant='contained' disabled={this.state.buttonDisabled} onClick={this.onSubmit} color='primary' size='large'>
-              Salvar
+          Salvar
         </Button>
       </Container>
     )
