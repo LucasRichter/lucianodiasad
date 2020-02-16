@@ -13,7 +13,7 @@ import Events from '../components/Events'
 import StockExchange from '../components/StockExchange'
 import Axios from 'axios'
 
-const index = ({ news, events, currentConfig, colors, homeImage, stocks }) => {
+const MainPage = ({ news, events, currentConfig, colors, homeImage, stocks }) => {
   return (
     <main>
       <PageHead
@@ -69,7 +69,7 @@ const index = ({ news, events, currentConfig, colors, homeImage, stocks }) => {
   )
 }
 
-index.propTypes = {
+MainPage.propTypes = {
   news: PropTypes.array,
   stocks: PropTypes.array,
   currentConfig: PropTypes.object,
@@ -78,11 +78,11 @@ index.propTypes = {
   events: PropTypes.array
 }
 
-index.defaultProps = {
+MainPage.defaultProps = {
   events: []
 }
 
-index.getInitialProps = async ({ currentConfig }) => {
+MainPage.getInitialProps = async ({ currentConfig }) => {
   const events = await getEvents({ limit: currentConfig.number_events })
   const news = await Axios.get('/api/news')
   const stocks = await Axios.get('/api/stocks')
@@ -90,4 +90,4 @@ index.getInitialProps = async ({ currentConfig }) => {
   return { news: news.data.news, events, homeImage, stocks: stocks.data.stocks }
 }
 
-export default index
+export default MainPage
