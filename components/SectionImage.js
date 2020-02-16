@@ -51,6 +51,10 @@ const SectionImage = ({ jsxText, title, colors, image }) => {
   )
 }
 
+SectionImage.defaultProps = {
+  image: {}
+}
+
 SectionImage.propTypes = {
   jsxText: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
