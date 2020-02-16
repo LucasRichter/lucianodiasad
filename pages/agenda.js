@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import PageHead from '../components/PageHead'
 import { Flex, Box } from '@rebass/grid'
 import Axios from 'axios'
-import JsxParser from 'react-jsx-parser'
 import SectionTitle from '../components/SectionTitle'
 import styled from 'styled-components'
 import GuestForm from '../components/GuestForm'
@@ -71,9 +70,7 @@ class Agenda extends Component {
               </Box>
 
               {description &&
-              <JsxParser
-                jsx={description}
-              />
+              <div dangerouslySetInnerHTML={{ __html: description }} />
               }
 
             </Box>

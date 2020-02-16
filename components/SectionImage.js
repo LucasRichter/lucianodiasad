@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Flex, Box } from '@rebass/grid'
-import JsxParser from 'react-jsx-parser'
 import styled from 'styled-components'
 import AnimatedBox from './AnimatedBox'
 import SectionTitle from './SectionTitle'
@@ -46,9 +45,7 @@ const SectionImage = ({ jsxText, title, colors, image }) => {
             color={colors.secondary}
           />
         </Box>
-        <JsxParser
-          jsx={jsxText}
-        />
+        <div dangerouslySetInnerHTML={{ __html: jsxText }} />
       </AnimatedBox>
     </Flex>
   )
