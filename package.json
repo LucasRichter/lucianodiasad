@@ -72,7 +72,7 @@
 		"rss-parser": "^3.7.2",
 		"styled-components": "^4.0.0",
 		"styled-reset": "^2.0.10",
-		"swiper": "^4.5.0",
+		"swiper": "^6.5.1",
 		"title-case": "^2.1.1",
 		"urldecode-latin1": "^1.0.3"
 	},
