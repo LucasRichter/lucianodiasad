@@ -45,7 +45,7 @@
 		"lodash": "^4.17.4",
 		"material-ui-chip-input": "^1.0.0-beta.17",
 		"memory-cache": "^0.2.0",
-		"moment": "^2.24.0",
+		"moment": "^2.29.4",
 		"mongoose": "^4.7.6",
 		"mongoose-crudify": "^0.2.0",
 		"mongoose-file": "^0.0.2",
